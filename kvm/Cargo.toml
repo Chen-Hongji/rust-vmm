@@ -1,0 +1,8 @@
+[package]
+name = "kvm"
+version = "0.3.0"
+authors = ["Nathaniel McCallum <npmccallum@redhat.com>"]
+license = "Apache-2.0 OR BSD-3-Clause"
+edition = "2018"
+
+[dependencies]

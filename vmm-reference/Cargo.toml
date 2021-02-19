@@ -1,0 +1,28 @@
+[package]
+name = "vmm-reference"
+version = "0.1.0"
+authors = ["rust-vmm AWS maintainers <rust-vmm-maintainers@amazon.com>"]
+edition = "2018"
+license = "Apache-2.0 OR BSD-3-Clause"
+
+[dependencies]
+vmm = { path = "src/vmm" }
+api = { path = "src/api" }
+
+[workspace]
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+codegen-units = 1
+lto = true
+panic = "abort"
+
+# We need these patches until the latest changes get released.
+[patch.crates-io]
+event-manager = { git = "https://github.com/rust-vmm/event-manager.git", rev = "19ddbaa" }
+linux-loader = { git = "https://github.com/rust-vmm/linux-loader.git", rev ="acf9c21"}
+
+[patch."https://github.com/rust-vmm/vm-virtio.git"]
+vm-virtio = { git = "https://github.com/alexandruag/vm-virtio.git", branch = "proto_wip4" }
